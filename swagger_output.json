@@ -1,0 +1,279 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:4500",
+  "tags":[
+    {
+      "name": "LinkedIn Company Microservice",
+      "description": "These are the endpoints of Company auth, update profile and user actions"
+    }
+  ],
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "bearerAuth": { "type": "apiKey", "name": "Authorization", "in": "header" }
+  },
+  "paths": {
+    "/company/signUp": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "any"
+              },
+              "password": {
+                "example": "any"
+              },
+              "official_email":
+              {
+                "example": "any"
+              }
+            }
+          }
+        }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/company/login": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "example": "any"
+              },
+              "password": {
+                "example": "any"
+              }
+            }
+          }
+        }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/company/logout": {
+      "patch": {
+        "tags":["Company"],
+        "description": "",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/comapny/forget_password": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/company-action/create_jobs": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "job_title": {
+                "example": "any"
+              },
+              "job_location": {
+                "example": "any"
+              },
+              "skills":
+              {
+                "example": "any"
+              },
+              "Description":{
+                "example":"any"
+              },
+              "number_of_openings":{
+                "example":"any"
+              },
+              "salary_offered":{
+                "example":"any"
+              }
+            }
+          }
+        }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/company-action/see_all_applicants": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "jobId": {
+                "example": "any"
+              }
+            }
+          }
+        }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/company-action/select_candidate": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "example": "any"
+              },
+              "jobId": {
+                "example": "any"
+              }
+            }
+          }
+        }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/compay-action/send_mail_to_selected_candidates": {
+      "post": {
+        "tags":["Company"],
+        "description": "",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "job_id": {
+                "example": "any"
+              }
+            }
+          }
+        }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
